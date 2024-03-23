@@ -92,7 +92,7 @@ export default App;
 
 ## 思考题
 
-如果 DOM 树特别大,为什么会卡顿?
+如果 DOM 树特别大,为什么会卡顿 ?
 
 ```js
 const render = (App, container) => {
