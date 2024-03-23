@@ -77,6 +77,19 @@ const App = React.createElement("div", null, "9999");
 export default App;
 ```
 
+**扩展-自定义 react 的名字**
+jsx 这里默认使用的是`React.createElement`, 如果需要更改`React`这个名称,可以使用 pragma 进行指定.
+
+```js
+/**@jsx CReact.createElement */
+import CReact from "./core/React.js";
+const App = <div id="app">hello world</div>;
+
+export default App;
+```
+
+> 上面就是使用 `CReact.createElement` 替换了 `React.createElement`
+
 ## 思考题
 
 如果 DOM 树特别大,为什么会卡顿?
