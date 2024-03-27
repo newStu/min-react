@@ -21,11 +21,11 @@ const createElement = (type, props, ...children) => {
 };
 
 let nextWorkOfUnit = null;
-const render = (App, container) => {
+const render = (el, container) => {
   nextWorkOfUnit = {
     dom: container,
     props: {
-      children: [App],
+      children: [el],
     },
   };
 };

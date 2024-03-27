@@ -19,11 +19,11 @@
 ```js
 let nextWorkOfUnit = null;
 let root = null;
-const render = (App, container) => {
+const render = (el, container) => {
   root = nextWorkOfUnit = {
     dom: container,
     props: {
-      children: [App],
+      children: [el],
     },
   };
 };

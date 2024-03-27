@@ -210,11 +210,11 @@ function performWorkOfUnit(fiber) {
 #### 将 render 函数与 performWorkOfUnit 函数进行合并
 
 ```js
-const render = (App, container) => {
+const render = (el, container) => {
   nextWorkOfUnit = {
     dom: container,
     props: {
-      children: [App],
+      children: [el],
     },
   };
 };
