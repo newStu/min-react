@@ -1,7 +1,7 @@
 import React from "./core/React.js";
 
-let count = 0;
 let props = { id: "test" };
+let count = 0;
 function Counter() {
   function handleClick() {
     count++;
