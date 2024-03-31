@@ -1,6 +1,7 @@
 module.exports = {
   title: "Min React",
   description: "从0实现一个微型React",
+  base: "/min-react/",
   themeConfig: {
     lastUpdated: "2024-03-28",
     docsDir: "docs",
