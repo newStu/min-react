@@ -36,6 +36,8 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
         env:
           PNPM_VERSION: 'latest' 
+          
+      - name: Install dependencies
         run: npm install -g pnpm@${PNPM_VERSION}
         
       - name: Add PNPM to PATH
