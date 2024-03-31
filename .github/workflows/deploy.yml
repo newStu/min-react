@@ -28,6 +28,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Node.js and PNPM
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.14.0' # Replace with desired Node.js version
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+        env:
+          PNPM_VERSION: 'latest' 
+        run: npm install -g pnpm@${PNPM_VERSION}
+        
+      - name: Add PNPM to PATH
+        run: echo "$HOME/.npm-global/bin" >> $GITHUB_PATH # 或其他对应全局npm包路径
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
