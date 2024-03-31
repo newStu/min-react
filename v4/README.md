@@ -293,4 +293,4 @@ root => wipRoot => work in progress
 我们的 initChildren 方法也从一开始的初始化功能有所拓展，所以也需要更改名称为 reconcileChildren
 initChildren => reconcileChildren
 
-改名作为重构看似乎不重要，实则一个好的名称，可以让代码可读性大幅度提升
+改名作为重构看似不重要，实则一个好的名称，可以让代码可读性大幅度提升
