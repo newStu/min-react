@@ -21,5 +21,6 @@
   "devDependencies": {
     "vite": "^5.2.6",
     "vitepress": "^1.0.1"
-  }
+  },
+  "packageManager": "pnpm@8.12.1"
 }
