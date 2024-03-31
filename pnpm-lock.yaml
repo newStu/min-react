@@ -27,6 +27,12 @@ importers:
 
   v5: {}
 
+  v6: {}
+
+  v7: {}
+
+  v8TodoList: {}
+
 packages:
 
   /@algolia/autocomplete-core@1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.23.2)(search-insights@2.13.0):

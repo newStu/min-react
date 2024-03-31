@@ -12,7 +12,8 @@
     "dev6": "pnpm -C v6 dev",
     "dev7": "pnpm -C v7 dev",
     "dev8": "pnpm -C v8TodoList dev",
-    "docs": "pnpm -C docs dev"
+    "docs": "pnpm -C docs dev",
+    "build": "pnpm -C docs build"
   },
   "keywords": [],
   "author": "",
