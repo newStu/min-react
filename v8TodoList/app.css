@@ -1,0 +1,7 @@
+.radio-group{
+    display: flex;
+}
+
+label.done{
+ text-decoration: line-through;
+}

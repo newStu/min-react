@@ -1,0 +1,24 @@
+{
+  "name": "min-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev1": "pnpm -C v1 dev",
+    "dev2": "pnpm -C v2/v1 dev",
+    "dev3": "pnpm -C v3 dev",
+    "dev4": "pnpm -C v4 dev",
+    "dev5": "pnpm -C v5 dev",
+    "dev6": "pnpm -C v6 dev",
+    "dev7": "pnpm -C v7 dev",
+    "dev8": "pnpm -C v8TodoList dev",
+    "docs": "pnpm -C docs dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.2.6",
+    "vitepress": "^1.0.1"
+  }
+}
