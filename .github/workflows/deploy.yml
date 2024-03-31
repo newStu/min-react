@@ -31,12 +31,12 @@ jobs:
       - name: Setup Node.js and PNPM
         uses: actions/setup-node@v2
         with:
-          node-version: '16.14.0' # Replace with desired Node.js version
+          node-version: '16.19.0' # Replace with desired Node.js version
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
         env:
           PNPM_VERSION: 'latest' 
-          
+
       - name: Install dependencies
         run: npm install -g pnpm@${PNPM_VERSION}
         
