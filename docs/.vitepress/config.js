@@ -37,6 +37,7 @@ module.exports = {
             { text: "更新子节点", link: "/develop/update_children" },
             { text: "useState", link: "/develop/use_state" },
             { text: "useEffect", link: "/develop/use_effect" },
+            { text: "useRef 和 useMemo", link: "/develop/use_memo_use_ref" },
             { text: "问题优化", link: "/develop/question_optimization" },
           ],
         },

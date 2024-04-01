@@ -134,7 +134,11 @@ function updateFunctionComponent(fiber) {
   wipFiber = fiber;
   stateHooks = [];
   effectHooks = [];
+  memoHooks = [];
+  refHooks = [];
   stateHookIndex = 0;
+  refHookIndex = 0;
+  memoIndex = 0;
   const { type, props } = fiber;
   const children = [type(props)];
   reconcileChildren(fiber, children);
@@ -193,6 +197,12 @@ function commitDeletion(fiber) {
   }
 }
 
+function verifyDepsChange(oldDeps = [], newDeps = []) {
+  return oldDeps.some((dep, i) => {
+    return newDeps[i] !== dep;
+  });
+}
+
 function runCleanup(fiber, isUnmount = false) {
   if (!fiber) return;
   const oldFiberHooks = isUnmount
@@ -205,9 +215,7 @@ function runCleanup(fiber, isUnmount = false) {
       } else {
         const newFiberHooks = fiber.effectHooks[index];
         // 判断依赖是否改变执行
-        const isChange = effectHook?.deps.some((dep, i) => {
-          return newFiberHooks.deps[i] !== dep;
-        });
+        const isChange = verifyDepsChange(effectHook?.deps, newFiberHooks.deps);
 
         if (effectHook.cleanup && effectHook?.deps.length > 0 && isChange) {
           effectHook.cleanup();
@@ -233,9 +241,7 @@ function commitEffects() {
         const oldHooks = oldFiberHooks[index];
         if (effectHook?.deps.length !== 0) {
           // 判断依赖是否改变执行
-          const isChange = effectHook?.deps.some((dep, i) => {
-            return oldHooks.deps[i] !== dep;
-          });
+          const isChange = verifyDepsChange(effectHook?.deps, oldHooks.deps);
           if (isChange) {
             effectHook.cleanup = effectHook.callback();
           } else {
@@ -369,12 +375,51 @@ function useEffect(callback, deps) {
   wipFiber.effectHooks = effectHooks;
 }
 
+let refHookIndex;
+let refHooks;
+function useRef(initial) {
+  const currentFiber = wipFiber;
+  const oldRefHook = currentFiber.alternate?.refHooks[refHookIndex];
+  const refHook = {
+    current: oldRefHook ? oldRefHook.current : initial,
+  };
+
+  refHooks.push(refHook);
+  currentFiber.refHooks = refHooks;
+
+  refHookIndex++;
+  return refHook;
+}
+
+let memoIndex;
+let memoHooks;
+function useMemo(callback, deps) {
+  const currentFiber = wipFiber;
+  const oldMemoHook = currentFiber.alternate?.memoHooks[memoIndex];
+
+  const isChange = verifyDepsChange(oldMemoHook?.deps, deps);
+
+  // 没有改变并且有老的值,就直接用
+  const memoHook = {
+    value: oldMemoHook?.value && !isChange ? oldMemoHook?.value : callback(),
+    deps,
+  };
+
+  memoHooks.push(memoHook);
+  memoIndex++;
+  currentFiber.memoHooks = memoHooks;
+
+  return memoHook.value;
+}
+
 const React = {
   update,
   render,
   createElement,
   useState,
   useEffect,
+  useRef,
+  useMemo,
 };
 
 export default React;
