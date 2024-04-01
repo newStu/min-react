@@ -8,11 +8,10 @@ module.exports = {
     editLinks: true,
     editLinkText: "编辑此⽹站",
     outlineTitle: "页面导航",
-    repo: "https://gitee.com/wangzhaoyv/min-react",
-    footer: {
-      message: "Released under the MITLicense.",
-      copyright: "Copyright © 2023-present ZZ",
-    },
+    repo: "https://github.com/newStu/min-react",
+    socialLinks: [
+      { icon: "github", link: "https://github.com/newStu/min-react" },
+    ],
     nav: [
       {
         text: "开发文档",
@@ -42,6 +41,10 @@ module.exports = {
           ],
         },
       ],
+    },
+    footer: {
+      message: "Released under the MITLicense.",
+      copyright: "Copyright © 2024-present WZY",
     },
   },
 };
